@@ -11,16 +11,16 @@
   },
   "scripts": {
     "start": "tsc --build -w",
-    "test": "yarn test:internal && yarn test:integration",
+    "test": "yarn-or-npm run test:internal && yarn-or-npm run test:integration",
     "test:internal": "jest",
-    "test:integration": "yarn test:integration:node && yarn test:integration:browser",
+    "test:integration": "yarn-or-npm run test:integration:node && yarn-or-npm run test:integration:browser",
     "test:integration:node": "jest --c test/jest.node.config.js --runInBand",
     "test:integration:browser": "jest --c test/jest.browser.config.js",
     "clean": "rimraf lib",
-    "build": "yarn clean && tsc --build",
-    "prepare": "yarn simple-git-hooks init",
+    "build": "yarn-or-npm run clean && tsc --build",
+    "prepare": "yarn-or-npm simple-git-hooks init",
     "release": "release publish",
-    "prepublishOnly": "yarn build && yarn test"
+    "prepublishOnly": "yarn-or-npm run build && yarn-or-npm run test"
   },
   "files": [
     "lib",
@@ -63,7 +63,8 @@
     "supertest": "^6.1.6",
     "ts-jest": "^27.1.1",
     "typescript": "4.3.5",
-    "wait-for-expect": "^3.0.2"
+    "wait-for-expect": "^3.0.2",
+    "yarn-or-npm": "^1.0.0"
   },
   "dependencies": {
     "@open-draft/until": "^1.0.3",
